@@ -1,0 +1,10 @@
+.container {
+    text-align: center;
+  }
+  
+  button {
+    display: inline-block;
+    width: 45%;
+    margin: 5px;
+  }
+  
