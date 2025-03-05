@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
 import { QuoteService } from '../../services/quote.service';
 import { FormsModule } from '@angular/forms';
+import { Driver } from '../../models/insurance-data.model';
 
 @Component({
   selector: 'app-driver-form',
@@ -14,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./driver-form.component.css']
 })
 export class DriverFormComponent {
-  driver = { firstName: '', lastName: '', dob: '', address: '' };
+  driver: Driver = { firstName: '', lastName: '', dob: '', address: '' };
 
   constructor(private router: Router, private insuranceService: QuoteService) {}
 

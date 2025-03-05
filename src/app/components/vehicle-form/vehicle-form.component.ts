@@ -5,6 +5,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Router, RouterModule } from '@angular/router';
 import { QuoteService } from '../../services/quote.service';
 import { FormsModule } from '@angular/forms';
+import { Vehicle } from '../../models/insurance-data.model';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -14,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./vehicle-form.component.css']
 })
 export class VehicleFormComponent {
-  vehicle = { year: '', make: '', hasLoan: false };
+  vehicle: Vehicle = { year: '', make: '', hasLoan: false };
 
   constructor(private router: Router, private insuranceService: QuoteService) {}
 

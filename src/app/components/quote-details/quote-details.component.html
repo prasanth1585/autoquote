@@ -2,13 +2,21 @@
   <h2>Your Auto Insurance Quote</h2>
 
   <h3>Personal Information</h3>
-  <p><strong>First Name:</strong> {{ quote.drivers?.[0]?.firstName || 'N/A' }}</p>
-  <p><strong>Last Name:</strong> {{ quote.drivers?.[0]?.lastName || 'N/A' }}</p>
-  <p><strong>Date of Birth:</strong> {{ quote.drivers?.[0]?.dob || 'N/A' }}</p>
-  <p><strong>Address:</strong> {{ quote.drivers?.[0]?.address || 'N/A' }}</p>
+  <div *ngIf="quote.drivers.length > 0; else noDriver">
+      <div *ngFor="let driver of quote.drivers; let i = index">
+          <p><strong>Driver {{ i + 1 }}</strong></p>
+          <p>First Name: {{ driver.firstName }}</p>
+          <p>Last Name: {{ driver.lastName }}</p>
+          <p>Date of Birth: {{ driver.dob }}</p>
+          <p>Address: {{ driver.address }}</p>
+      </div>
+  </div>
+  <ng-template #noDriver>
+      <p>No driver information provided.</p>
+  </ng-template>
 
   <h3>Vehicle Information</h3>
-  <div *ngIf="quote.vehicles?.length > 0; else noVehicle">
+  <div *ngIf="quote.vehicles.length > 0; else noVehicle">
       <div *ngFor="let vehicle of quote.vehicles; let i = index">
           <p><strong>Vehicle {{ i + 1 }}</strong></p>
           <p>Year: {{ vehicle.year }}</p>

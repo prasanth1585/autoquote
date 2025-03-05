@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { QuoteService } from '../../services/quote.service';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-quote-details',
   standalone: true,
-  imports: [MatButtonModule, RouterModule, NgFor],
+  imports: [MatButtonModule, RouterModule, NgFor, CommonModule],
   templateUrl: './quote-details.component.html',
   styleUrls: ['./quote-details.component.css']
 })
