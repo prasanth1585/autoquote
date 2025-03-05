@@ -4,7 +4,7 @@ mat-toolbar {
   height: 80px;
   display: flex;
   align-items: center;
-  color: white;
+  color: rgb(255, 255, 255);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -12,6 +12,6 @@ mat-toolbar {
   font-size: 26px;  /* Increase font size */
   font-weight: bold; /* Make it bold */
   font-style: italic; /* Make it italic */
-  color: yellow; /* Highlight the text */
+  color: #800020; /* Highlight the text */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better visibility */
 }

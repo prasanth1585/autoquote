@@ -1,10 +1,33 @@
 <div class="container">
-    <h2>Your Auto Insurance Quote</h2>
-  
-    <p>Estimated Monthly Premium: <strong>$120</strong></p>
-    <p>Applied Discounts: Homeowner, Married</p>
-  
-    <button mat-raised-button color="primary">Modify Details</button>
-    <button mat-raised-button color="warn">Proceed to Payment</button>
+  <h2>Your Auto Insurance Quote</h2>
+
+  <h3>Personal Information</h3>
+  <p><strong>First Name:</strong> {{ quote.drivers?.[0]?.firstName || 'N/A' }}</p>
+  <p><strong>Last Name:</strong> {{ quote.drivers?.[0]?.lastName || 'N/A' }}</p>
+  <p><strong>Date of Birth:</strong> {{ quote.drivers?.[0]?.dob || 'N/A' }}</p>
+  <p><strong>Address:</strong> {{ quote.drivers?.[0]?.address || 'N/A' }}</p>
+
+  <h3>Vehicle Information</h3>
+  <div *ngIf="quote.vehicles?.length > 0; else noVehicle">
+      <div *ngFor="let vehicle of quote.vehicles; let i = index">
+          <p><strong>Vehicle {{ i + 1 }}</strong></p>
+          <p>Year: {{ vehicle.year }}</p>
+          <p>Make: {{ vehicle.make }}</p>
+          <p>Has Loan: {{ vehicle.hasLoan ? 'Yes' : 'No' }}</p>
+      </div>
   </div>
-  
+  <ng-template #noVehicle>
+      <p>No vehicle information provided.</p>
+  </ng-template>
+
+  <h3>Insurance Details</h3>
+  <p><strong>ZIP Code:</strong> {{ quote.zipCode || 'N/A' }}</p>
+  <p><strong>Has Current Insurance:</strong> {{ quote.hasInsurance ? 'Yes' : 'No' }}</p>
+  <p><strong>Number of Vehicles:</strong> {{ quote.vehicleCount || 'N/A' }}</p>
+
+  <h3>Quote Summary</h3>
+  <p><strong>Estimated Monthly Premium:</strong> <strong>${{ quote.estimatedPremium }}</strong></p>
+
+  <button mat-raised-button color="primary">Modify Details</button>
+  <button mat-raised-button color="warn">Proceed to Payment</button>
+</div>

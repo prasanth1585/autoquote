@@ -2,14 +2,15 @@
     <h2>Insurance Information</h2>
   
     <p>Do you currently have car insurance?</p>
-    <button mat-raised-button color="primary">Yes</button>
-    <button mat-raised-button color="warn">No</button>
-  
-    <p>How many vehicles?</p>
-    <button mat-raised-button>1</button>
-    <button mat-raised-button>2</button>
-    <button mat-raised-button>3</button>
-    <button mat-raised-button>4+</button>
+    <button mat-raised-button color="primary" (click)="setInsurance(true)">Yes</button>
+    <button mat-raised-button color="warn" (click)="setInsurance(false)">No</button>
+
+    <p>Number of vehicles to insure</p>
+    <button mat-raised-button (click)="setVehicleCount(1)">1</button>
+    <button mat-raised-button (click)="setVehicleCount(2)">2</button>
+    <button mat-raised-button (click)="setVehicleCount(3)">3</button>
+    <button mat-raised-button (click)="setVehicleCount(4)">4+</button>
+
   
     <button mat-raised-button color="accent" routerLink="/vehicle-form">Next</button>
   </div>
