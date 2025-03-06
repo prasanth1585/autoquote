@@ -30,6 +30,10 @@ export class QuoteService {
     this.insuranceData.vehicleCount = count;
   }
 
+  getVehicleCount(): number {
+    return this.insuranceData.vehicleCount;
+  }
+
   // ✅ Add Vehicle
   addVehicle(vehicle: Vehicle) {
     console.log('Adding Vehicle:', vehicle);
@@ -64,4 +68,16 @@ export class QuoteService {
     this.calculatePremium();
     return this.insuranceData;
   }
+
+    // ✅ Clear Insurance Data
+    clearInsuranceData() {
+      this.insuranceData = {
+        zipCode: '',
+        hasInsurance: null,
+        vehicleCount: 0,
+        vehicles: [],
+        drivers: [],
+        estimatedPremium: 0,
+      };
+    }
 }

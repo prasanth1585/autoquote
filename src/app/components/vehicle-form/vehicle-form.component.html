@@ -1,26 +1,33 @@
 <div class="container">
-    <h2>Add a Vehicle</h2>
-  
+  <h2>Add Vehicles</h2>
+
+  <div *ngFor="let vehicle of vehicles; let i = index">
+    <h3>Vehicle {{ i + 1 }}</h3>
     <mat-form-field appearance="outline">
       <mat-label>Year</mat-label>
-      <mat-select [(ngModel)]="vehicle.year">
-        <mat-option value="2025">2025</mat-option>
-        <mat-option value="2024">2024</mat-option>
+      <mat-select [(ngModel)]="vehicles[i].year">
+        <mat-option *ngFor="let year of vehicleYears" [value]="year">{{ year }}</mat-option>
       </mat-select>
     </mat-form-field>
     
     <mat-form-field appearance="outline">
       <mat-label>Make</mat-label>
-      <mat-select [(ngModel)]="vehicle.make">
-        <mat-option value="Acura">Acura</mat-option>
-        <mat-option value="Honda">Honda</mat-option>
+      <mat-select [(ngModel)]="vehicles[i].make">
+        <mat-option *ngFor="let make of vehicleMakes" [value]="make.brand">{{ make.brand }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <p>Do you make payments on this vehicle?</p>
-    <button mat-raised-button>Yes</button>
-    <button mat-raised-button>No</button>
 
-    <button mat-raised-button color="accent" (click)="addVehicle()">Next</button>
-   
+    <mat-form-field appearance="outline" *ngIf="vehicles[i].make">
+      <mat-label>Model</mat-label>
+      <mat-select [(ngModel)]="vehicles[i].model">
+        <mat-option *ngFor="let model of getModels(vehicles[i].make)" [value]="model">{{ model }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <p>Do you make payments on this vehicle?</p>
+    <button mat-raised-button (click)="vehicles[i].hasLoan = true">Yes</button>
+    <button mat-raised-button (click)="vehicles[i].hasLoan = false">No</button>
   </div>
-  
+
+  <button mat-raised-button color="accent" (click)="addVehicles()">Next</button>
+</div>

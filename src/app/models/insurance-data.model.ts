@@ -8,6 +8,7 @@ export interface Driver {
   export interface Vehicle {
     year: string;
     make: string;
+    model: string;
     hasLoan: boolean;
   }
   
