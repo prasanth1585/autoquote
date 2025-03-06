@@ -1,41 +1,81 @@
 <div class="container">
-  <h2>Your Auto Insurance Quote</h2>
-
-  <h3>Personal Information</h3>
-  <div *ngIf="quote.drivers.length > 0; else noDriver">
-      <div *ngFor="let driver of quote.drivers; let i = index">
-          <p><strong>Driver {{ i + 1 }}</strong></p>
-          <p>First Name: {{ driver.firstName }}</p>
-          <p>Last Name: {{ driver.lastName }}</p>
-          <p>Date of Birth: {{ driver.dob }}</p>
-          <p>Address: {{ driver.address }}</p>
-      </div>
-  </div>
-  <ng-template #noDriver>
+    <h2>Your Auto Insurance Quote</h2>
+  
+    <h3>Personal Information</h3>
+    <div *ngIf="quote.drivers.length > 0; else noDriver">
+      <table>
+        <thead>
+          <tr>
+            <th>Driver</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let driver of quote.drivers; let i = index">
+            <td>Driver {{ i + 1 }}</td>
+            <td>{{ driver.firstName }}</td>
+            <td>{{ driver.lastName }}</td>
+            <td>{{ driver.dob }}</td>
+            <td>{{ driver.address }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noDriver>
       <p>No driver information provided.</p>
-  </ng-template>
-
-  <h3>Vehicle Information</h3>
-  <div *ngIf="quote.vehicles.length > 0; else noVehicle">
-      <div *ngFor="let vehicle of quote.vehicles; let i = index">
-          <p><strong>Vehicle {{ i + 1 }}</strong></p>
-          <p>Year: {{ vehicle.year }}</p>
-          <p>Make: {{ vehicle.make }}</p>
-          <p>Has Loan: {{ vehicle.hasLoan ? 'Yes' : 'No' }}</p>
-      </div>
-  </div>
-  <ng-template #noVehicle>
+    </ng-template>
+  
+    <h3>Vehicle Information</h3>
+    <div *ngIf="quote.vehicles.length > 0; else noVehicle">
+      <table>
+        <thead>
+          <tr>
+            <th>Vehicle</th>
+            <th>Year</th>
+            <th>Make</th>
+            <th>Has Loan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehicle of quote.vehicles; let i = index">
+            <td>Vehicle {{ i + 1 }}</td>
+            <td>{{ vehicle.year }}</td>
+            <td>{{ vehicle.make }}</td>
+            <td>{{ vehicle.hasLoan ? 'Yes' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noVehicle>
       <p>No vehicle information provided.</p>
-  </ng-template>
-
-  <h3>Insurance Details</h3>
-  <p><strong>ZIP Code:</strong> {{ quote.zipCode || 'N/A' }}</p>
-  <p><strong>Has Current Insurance:</strong> {{ quote.hasInsurance ? 'Yes' : 'No' }}</p>
-  <p><strong>Number of Vehicles:</strong> {{ quote.vehicleCount || 'N/A' }}</p>
-
-  <h3>Quote Summary</h3>
-  <p><strong>Estimated Monthly Premium:</strong> <strong>${{ quote.estimatedPremium }}</strong></p>
-
-  <button mat-raised-button color="primary">Modify Details</button>
-  <button mat-raised-button color="warn">Proceed to Payment</button>
-</div>
+    </ng-template>
+  
+    <h3>Insurance Details</h3>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>ZIP Code:</strong></td>
+          <td>{{ quote.zipCode || 'N/A' }}</td>
+        </tr>
+        <tr>
+          <td><strong>Has Current Insurance:</strong></td>
+          <td>{{ quote.hasInsurance ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+          <td><strong>Number of Vehicles:</strong></td>
+          <td>{{ quote.vehicleCount || 'N/A' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h3>Quote Summary</h3>
+    <p><strong>Estimated Monthly Premium:</strong> <strong>${{ quote.estimatedPremium }}</strong></p>
+  
+    <div class="buttons">
+      <button mat-raised-button color="primary">Modify Details</button>
+      <button mat-raised-button color="warn">Proceed to Payment</button>
+    </div>
+  </div>

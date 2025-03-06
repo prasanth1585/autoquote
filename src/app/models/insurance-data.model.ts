@@ -16,6 +16,7 @@ export interface Driver {
     zipCode: string;
     hasInsurance: boolean | null;
     vehicleCount: number;
+    driverCount: number;
     vehicles: Vehicle[];
     drivers: Driver[];
     estimatedPremium: number;

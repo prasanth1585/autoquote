@@ -10,6 +10,7 @@ export class QuoteService {
     zipCode: '',
     hasInsurance: null,
     vehicleCount: 0,
+    driverCount: 0, // Add driverCount
     vehicles: [],
     drivers: [],
     estimatedPremium: 0,
@@ -30,8 +31,20 @@ export class QuoteService {
     this.insuranceData.vehicleCount = count;
   }
 
+  // ✅ Get Vehicle Count
   getVehicleCount(): number {
     return this.insuranceData.vehicleCount;
+  }
+
+  // ✅ Set Driver Count
+  setDriverCount(count: number) {
+    this.insuranceData.driverCount = count;
+    this.insuranceData.drivers = Array.from({ length: count }, () => ({ firstName: '', lastName: '', dob: '', address: '' }));
+  }
+
+  // ✅ Get Driver Count
+  getDriverCount(): number {
+    return this.insuranceData.driverCount;
   }
 
   // ✅ Add Vehicle
@@ -69,15 +82,16 @@ export class QuoteService {
     return this.insuranceData;
   }
 
-    // ✅ Clear Insurance Data
-    clearInsuranceData() {
-      this.insuranceData = {
-        zipCode: '',
-        hasInsurance: null,
-        vehicleCount: 0,
-        vehicles: [],
-        drivers: [],
-        estimatedPremium: 0,
-      };
-    }
+  // ✅ Clear Insurance Data
+  clearInsuranceData() {
+    this.insuranceData = {
+      zipCode: '',
+      hasInsurance: null,
+      vehicleCount: 0,
+      driverCount: 0, // Reset driverCount
+      vehicles: [],
+      drivers: [],
+      estimatedPremium: 0,
+    };
+  }
 }

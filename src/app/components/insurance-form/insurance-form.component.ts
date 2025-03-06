@@ -20,8 +20,11 @@ export class InsuranceFormComponent {
     this.insuranceService.setInsuranceStatus(status);
   }
 
+  setDriverCount(count: number) {
+    this.insuranceService.setDriverCount(count);
+  }
+
   setVehicleCount(count: number) {
     this.insuranceService.setVehicleCount(count);
-    this.router.navigate(['/vehicle-form']);
   }
 }

@@ -1,6 +1,8 @@
 <div class="container">
-    <h2>Add Driver Information</h2>
-  
+  <h2>Add Driver Information</h2>
+
+  <div *ngFor="let driver of drivers; let i = index">
+    <h3>Driver {{ i + 1 }}</h3>
     <mat-form-field appearance="outline">
       <mat-label>First Name</mat-label>
       <input matInput type="text" [(ngModel)]="driver.firstName">
@@ -13,14 +15,14 @@
   
     <mat-form-field appearance="outline">
       <mat-label>Date of Birth</mat-label>
-      <input matInput type="date">
+      <input matInput type="date" [(ngModel)]="driver.dob">
     </mat-form-field>
   
     <mat-form-field appearance="outline">
       <mat-label>Street Address</mat-label>
-      <input matInput type="text">
+      <input matInput type="text" [(ngModel)]="driver.address">
     </mat-form-field>
-    
-    <button mat-raised-button color="accent" (click)="addDriver()">Get Quote</button>
   </div>
   
+  <button mat-raised-button color="accent" (click)="addDrivers()">Get Quote</button>
+</div>
